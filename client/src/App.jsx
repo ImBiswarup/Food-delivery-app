@@ -3,6 +3,8 @@ import Header from './components/Header'
 import Home from "./pages/Home"
 import About from "./pages/About"
 import Contact from "./pages/Contact"
+import SingleItem from "./pages/SingleItem"
+import CheckoutPage from "./pages/CheckoutPage"
 
 function App() {
 
@@ -13,6 +15,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/:id" element={<SingleItem />} />
+        <Route path="/:id/checkout" element={<CheckoutPage />} />
       </Routes>
     </>
   )
