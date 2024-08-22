@@ -12,7 +12,11 @@ export const FoodItems = [
         rating: 4.5,
         reviews: [
             { user: "John Doe", comment: "Delicious and aromatic!", rating: 5 },
-            { user: "Jane Smith", comment: "A bit too spicy for my taste.", rating: 4 }
+            { user: "Jane Smith", comment: "A bit too spicy for my taste.", rating: 4 },
+            { user: "Arjun Gupta", comment: "Perfectly balanced flavors.", rating: 5 },
+            { user: "Maria Lopez", comment: "Good, but could use more meat.", rating: 4 },
+            { user: "Ali Hassan", comment: "Authentic and well-cooked.", rating: 5 },
+            { user: "Sophia Turner", comment: "Too oily for me.", rating: 3 }
         ],
         tags: ["spicy", "rice", "main course", "Indian"]
     },
@@ -29,7 +33,11 @@ export const FoodItems = [
         rating: 4.7,
         reviews: [
             { user: "Alice Johnson", comment: "Best pizza in town!", rating: 5 },
-            { user: "Bob Brown", comment: "Good, but a bit greasy.", rating: 4 }
+            { user: "Bob Brown", comment: "Good, but a bit greasy.", rating: 4 },
+            { user: "Emily Davis", comment: "Cheese was perfectly melted.", rating: 5 },
+            { user: "Tom Hardy", comment: "Crust was too thick for me.", rating: 3 },
+            { user: "Lucas Graham", comment: "Loved the pepperoni!", rating: 5 },
+            { user: "Nina Williams", comment: "A bit too salty.", rating: 4 }
         ],
         tags: ["cheese", "main course", "Italian", "savory"]
     },
@@ -46,7 +54,11 @@ export const FoodItems = [
         rating: 4.6,
         reviews: [
             { user: "Michael Lee", comment: "The patty was cooked perfectly.", rating: 5 },
-            { user: "Sarah Wilson", comment: "Too much mayonnaise.", rating: 4 }
+            { user: "Sarah Wilson", comment: "Too much mayonnaise.", rating: 4 },
+            { user: "Ethan Hunt", comment: "Juicy and flavorful.", rating: 5 },
+            { user: "Olivia Brown", comment: "Could use more cheese.", rating: 4 },
+            { user: "Noah King", comment: "Bun was a bit stale.", rating: 3 },
+            { user: "Sophia Clark", comment: "One of the best burgers I've had.", rating: 5 }
         ],
         tags: ["beef", "main course", "American", "savory"]
     },
@@ -63,7 +75,11 @@ export const FoodItems = [
         rating: 4.4,
         reviews: [
             { user: "Emma Davis", comment: "Perfectly creamy and flavorful.", rating: 5 },
-            { user: "Liam Brown", comment: "A bit too cheesy for my liking.", rating: 4 }
+            { user: "Liam Brown", comment: "A bit too cheesy for my liking.", rating: 4 },
+            { user: "Ava Martin", comment: "Loved the sauce!", rating: 5 },
+            { user: "James White", comment: "Pasta was overcooked.", rating: 3 },
+            { user: "Grace Taylor", comment: "Just the right amount of garlic.", rating: 4 },
+            { user: "William Harris", comment: "Would order again.", rating: 5 }
         ],
         tags: ["cheese", "main course", "Italian", "creamy"]
     },
@@ -80,7 +96,11 @@ export const FoodItems = [
         rating: 4.2,
         reviews: [
             { user: "Jessica Taylor", comment: "Quick and tasty lunch option.", rating: 4 },
-            { user: "Chris Evans", comment: "Could use more filling.", rating: 3 }
+            { user: "Chris Evans", comment: "Could use more filling.", rating: 3 },
+            { user: "Karen Miller", comment: "Perfect for a light meal.", rating: 4 },
+            { user: "David Johnson", comment: "A bit dry.", rating: 3 },
+            { user: "Sophia Lewis", comment: "Loved the fresh veggies.", rating: 4 },
+            { user: "John Carter", comment: "Good value for money.", rating: 4 }
         ],
         tags: ["snack", "quick", "American", "savory"]
     },
@@ -97,7 +117,11 @@ export const FoodItems = [
         rating: 4.3,
         reviews: [
             { user: "Amanda Green", comment: "Very fresh and crunchy.", rating: 4 },
-            { user: "David Miller", comment: "Needs a bit more dressing.", rating: 3 }
+            { user: "David Miller", comment: "Needs a bit more dressing.", rating: 3 },
+            { user: "Ella Parker", comment: "Perfectly light and fresh.", rating: 5 },
+            { user: "Lily James", comment: "Could use more feta.", rating: 4 },
+            { user: "Henry Scott", comment: "Loved the olives.", rating: 4 },
+            { user: "Isabella Moore", comment: "A bit bland for my taste.", rating: 3 }
         ],
         tags: ["healthy", "vegetarian", "appetizer", "fresh"]
     },
@@ -114,7 +138,11 @@ export const FoodItems = [
         rating: 4.6,
         reviews: [
             { user: "Sophie Turner", comment: "Great flavor and spice level.", rating: 5 },
-            { user: "Daniel Radcliffe", comment: "A bit too spicy for me.", rating: 4 }
+            { user: "Daniel Radcliffe", comment: "A bit too spicy for me.", rating: 4 },
+            { user: "Lucas Evans", comment: "Loved the fresh toppings.", rating: 5 },
+            { user: "Emily Watson", comment: "Taco shells were too soft.", rating: 3 },
+            { user: "Jake Hall", comment: "Perfect portion size.", rating: 4 },
+            { user: "Chloe Clark", comment: "Would definitely order again.", rating: 5 }
         ],
         tags: ["spicy", "Mexican", "main course", "savory"]
     },
@@ -130,213 +158,265 @@ export const FoodItems = [
         nutritionalInfo: { calories: 550, fat: 20, protein: 15 },
         rating: 4.5,
         reviews: [
-            { user: "Natalie Portman", comment: "Perfectly cooked and flavorful.", rating: 5 },
-            { user: "Chris Hemsworth", comment: "Could use a bit more sauce.", rating: 4 }
+            { user: "Oliver Wilson", comment: "Perfectly cooked noodles.", rating: 5 },
+            { user: "Mia Davis", comment: "A bit too salty.", rating: 4 },
+            { user: "Ethan Johnson", comment: "Loved the vegetables.", rating: 5 },
+            { user: "Ava Martinez", comment: "Could use more sauce.", rating: 4 },
+            { user: "Lucas White", comment: "Great flavor overall.", rating: 5 },
+            { user: "Ella Green", comment: "A bit too oily for me.", rating: 3 }
         ],
-        tags: ["Asian", "main course", "vegetarian", "savory"]
+        tags: ["Asian", "main course", "savory", "vegetarian"]
     },
     {
         id: 9,
-        name: "Sushi",
-        price: 350,
-        quantity: 15,
-        category: "Main Course",
-        imageUrl: "/images/sushi.jpg",
-        description: "Fresh sushi rolls with a variety of fillings and toppings.",
-        ingredients: ["Sushi rice", "Seaweed", "Raw fish", "Vegetables"],
-        nutritionalInfo: { calories: 300, fat: 8, protein: 20 },
-        rating: 4.8,
+        name: "French Fries",
+        price: 90,
+        quantity: 75,
+        category: "Snacks",
+        imageUrl: "/images/fries.jpg",
+        description: "Crispy and golden French fries, lightly salted.",
+        ingredients: ["Potatoes", "Salt", "Vegetable oil"],
+        nutritionalInfo: { calories: 300, fat: 15, protein: 3 },
+        rating: 4.3,
         reviews: [
-            { user: "Jared Leto", comment: "The freshest sushi I've had!", rating: 5 },
-            { user: "Emma Watson", comment: "A bit pricey, but worth it.", rating: 4 }
+            { user: "Jack Miller", comment: "Crispy and delicious.", rating: 5 },
+            { user: "Hannah Johnson", comment: "A bit too salty.", rating: 3 },
+            { user: "Aiden Davis", comment: "Perfect with ketchup.", rating: 4 },
+            { user: "Grace Wilson", comment: "Too oily for me.", rating: 3 },
+            { user: "Mason Lee", comment: "Just the right amount of crisp.", rating: 4 },
+            { user: "Lily Brown", comment: "Good portion size.", rating: 4 }
         ],
-        tags: ["Japanese", "main course", "fresh", "seafood"]
+        tags: ["snack", "side dish", "American", "savory"]
     },
     {
         id: 10,
-        name: "Steak",
-        price: 500,
-        quantity: 10,
-        category: "Main Course",
-        imageUrl: "/images/steak.jpg",
-        description: "A perfectly grilled steak with a juicy and tender texture.",
-        ingredients: ["Beef steak", "Salt", "Pepper", "Garlic"],
-        nutritionalInfo: { calories: 800, fat: 45, protein: 60 },
-        rating: 4.9,
+        name: "Ice Cream",
+        price: 120,
+        quantity: 50,
+        category: "Desserts",
+        imageUrl: "/images/icecream.jpg",
+        description: "Creamy and rich ice cream available in various flavors.",
+        ingredients: ["Milk", "Cream", "Sugar", "Vanilla extract"],
+        nutritionalInfo: { calories: 250, fat: 14, protein: 4 },
+        rating: 4.8,
         reviews: [
-            { user: "Hugh Jackman", comment: "Cooked to perfection!", rating: 5 },
-            { user: "Jessica Alba", comment: "Too expensive for the portion size.", rating: 4 }
+            { user: "Sophia Brown", comment: "Best ice cream I've had!", rating: 5 },
+            { user: "Emma Wilson", comment: "Perfectly creamy.", rating: 5 },
+            { user: "Noah Davis", comment: "A bit too sweet for me.", rating: 4 },
+            { user: "Ava Martinez", comment: "Loved the vanilla flavor.", rating: 5 },
+            { user: "Lucas Taylor", comment: "Could use more flavor options.", rating: 4 },
+            { user: "Mia Anderson", comment: "Melted too quickly.", rating: 3 }
         ],
-        tags: ["beef", "main course", "grilled", "savory"]
+        tags: ["dessert", "sweet", "frozen", "creamy"]
     },
     {
         id: 11,
-        name: "Fried Chicken",
-        price: 220,
+        name: "Sushi",
+        price: 250,
         quantity: 30,
         category: "Main Course",
-        imageUrl: "/images/fried_chicken.jpg",
-        description: "Crispy and flavorful fried chicken with a golden crust.",
-        ingredients: ["Chicken", "Flour", "Spices", "Oil"],
-        nutritionalInfo: { calories: 650, fat: 35, protein: 30 },
+        imageUrl: "/images/sushi.jpg",
+        description: "A variety of sushi rolls with fresh fish and vegetables.",
+        ingredients: ["Rice", "Nori", "Salmon", "Avocado", "Soy sauce"],
+        nutritionalInfo: { calories: 300, fat: 10, protein: 20 },
         rating: 4.7,
         reviews: [
-            { user: "Ryan Reynolds", comment: "The best fried chicken I've ever had.", rating: 5 },
-            { user: "Scarlett Johansson", comment: "A bit too greasy for my taste.", rating: 4 }
+            { user: "Alex Kim", comment: "Fresh and delicious.", rating: 5 },
+            { user: "Lily Thomas", comment: "Could use more wasabi.", rating: 4 },
+            { user: "James Lee", comment: "Best sushi I've had in a while.", rating: 5 },
+            { user: "Eva Anderson", comment: "Rice was a bit dry.", rating: 3 },
+            { user: "Jack Wilson", comment: "Loved the salmon.", rating: 5 },
+            { user: "Olivia Brown", comment: "A bit too expensive.", rating: 4 }
         ],
-        tags: ["fried", "main course", "American", "savory"]
+        tags: ["Japanese", "main course", "seafood", "fresh"]
     },
     {
         id: 12,
-        name: "Kebab",
-        price: 250,
-        quantity: 20,
-        category: "Main Course",
-        imageUrl: "/images/kebab.jpg",
-        description: "Grilled kebabs with tender meat and spices.",
-        ingredients: ["Ground meat", "Spices", "Onions", "Bell peppers"],
-        nutritionalInfo: { calories: 500, fat: 25, protein: 35 },
-        rating: 4.6,
+        name: "Pancakes",
+        price: 110,
+        quantity: 40,
+        category: "Breakfast",
+        imageUrl: "/images/pancakes.jpg",
+        description: "Fluffy pancakes served with syrup and butter.",
+        ingredients: ["Flour", "Eggs", "Milk", "Butter", "Maple syrup"],
+        nutritionalInfo: { calories: 350, fat: 15, protein: 8 },
+        rating: 4.5,
         reviews: [
-            { user: "Zendaya", comment: "Delicious and perfectly seasoned.", rating: 5 },
-            { user: "Tom Holland", comment: "A little dry but still good.", rating: 4 }
+            { user: "Ella Johnson", comment: "So fluffy and delicious.", rating: 5 },
+            { user: "Mason Brown", comment: "Syrup was too sweet for me.", rating: 4 },
+            { user: "Olivia Martinez", comment: "Perfect breakfast treat.", rating: 5 },
+            { user: "Jacob Smith", comment: "Could use more butter.", rating: 4 },
+            { user: "Emily Davis", comment: "A bit too thick.", rating: 3 },
+            { user: "Michael Lee", comment: "Loved it with the syrup.", rating: 5 }
         ],
-        tags: ["grilled", "main course", "spicy", "Middle Eastern"]
+        tags: ["breakfast", "sweet", "American", "fluffy"]
     },
     {
         id: 13,
-        name: "Paneer Tikka",
-        price: 180,
-        quantity: 25,
-        category: "Appetizers",
-        imageUrl: "/images/paneer_tikka.jpg",
-        description: "Grilled chunks of paneer marinated in spices.",
-        ingredients: ["Paneer", "Yogurt", "Spices", "Bell peppers"],
-        nutritionalInfo: { calories: 350, fat: 18, protein: 20 },
-        rating: 4.4,
+        name: "Waffles",
+        price: 130,
+        quantity: 35,
+        category: "Breakfast",
+        imageUrl: "/images/waffles.jpg",
+        description: "Crispy waffles served with whipped cream and strawberries.",
+        ingredients: ["Flour", "Eggs", "Milk", "Strawberries", "Whipped cream"],
+        nutritionalInfo: { calories: 400, fat: 20, protein: 10 },
+        rating: 4.6,
         reviews: [
-            { user: "Priyanka Chopra", comment: "Great for vegetarians!", rating: 5 },
-            { user: "Shahid Kapoor", comment: "A bit too spicy.", rating: 4 }
+            { user: "Sarah Johnson", comment: "Crispy and delicious.", rating: 5 },
+            { user: "Liam Brown", comment: "Could use more strawberries.", rating: 4 },
+            { user: "Grace Williams", comment: "Perfect with whipped cream.", rating: 5 },
+            { user: "David Lee", comment: "Waffles were a bit soggy.", rating: 3 },
+            { user: "Sophia Kim", comment: "Loved it!", rating: 5 },
+            { user: "Emma Thomas", comment: "A bit too sweet.", rating: 4 }
         ],
-        tags: ["vegetarian", "appetizer", "Indian", "grilled"]
+        tags: ["breakfast", "sweet", "American", "crispy"]
     },
     {
         id: 14,
-        name: "Dosa",
-        price: 90,
-        quantity: 50,
-        category: "Main Course",
-        imageUrl: "/images/dosa.jpg",
-        description: "Crispy and savory dosa served with chutneys and sambar.",
-        ingredients: ["Rice", "Lentils", "Spices"],
-        nutritionalInfo: { calories: 250, fat: 10, protein: 8 },
-        rating: 4.3,
+        name: "Chocolate Cake",
+        price: 180,
+        quantity: 20,
+        category: "Desserts",
+        imageUrl: "/images/chocolate_cake.jpg",
+        description: "A rich and moist chocolate cake topped with chocolate ganache.",
+        ingredients: ["Flour", "Cocoa powder", "Eggs", "Sugar", "Butter"],
+        nutritionalInfo: { calories: 450, fat: 25, protein: 6 },
+        rating: 4.8,
         reviews: [
-            { user: "Anushka Sharma", comment: "Perfectly crispy and flavorful.", rating: 4 },
-            { user: "Ranveer Singh", comment: "A bit dry, needs more chutney.", rating: 3 }
+            { user: "Ethan Davis", comment: "Best chocolate cake ever!", rating: 5 },
+            { user: "Sophia Wilson", comment: "A bit too rich for me.", rating: 4 },
+            { user: "Olivia Brown", comment: "Moist and delicious.", rating: 5 },
+            { user: "Ava Martinez", comment: "Could use more ganache.", rating: 4 },
+            { user: "James Clark", comment: "Perfect dessert.", rating: 5 },
+            { user: "Mia Lee", comment: "A bit too sweet.", rating: 4 }
         ],
-        tags: ["Indian", "main course", "crispy", "vegetarian"]
+        tags: ["dessert", "sweet", "chocolate", "rich"]
     },
     {
         id: 15,
-        name: "Idli",
-        price: 50,
-        quantity: 70,
-        category: "Main Course",
-        imageUrl: "/images/idli.jpg",
-        description: "Soft and fluffy steamed rice cakes served with chutneys.",
-        ingredients: ["Rice", "Lentils", "Fermentation starter"],
-        nutritionalInfo: { calories: 150, fat: 5, protein: 6 },
+        name: "Chicken Wings",
+        price: 150,
+        quantity: 25,
+        category: "Appetizers",
+        imageUrl: "/images/chicken_wings.jpg",
+        description: "Spicy and crispy chicken wings served with a tangy sauce.",
+        ingredients: ["Chicken", "Spices", "Butter", "Hot sauce"],
+        nutritionalInfo: { calories: 400, fat: 22, protein: 25 },
         rating: 4.6,
         reviews: [
-            { user: "Akshay Kumar", comment: "Perfectly soft and fluffy.", rating: 5 },
-            { user: "Kareena Kapoor", comment: "Needs more variety in chutneys.", rating: 4 }
+            { user: "Liam Johnson", comment: "Perfectly crispy and spicy.", rating: 5 },
+            { user: "Sophia Brown", comment: "A bit too spicy for me.", rating: 4 },
+            { user: "Noah Martinez", comment: "Loved the sauce.", rating: 5 },
+            { user: "Emily Davis", comment: "A bit too greasy.", rating: 3 },
+            { user: "William Lee", comment: "Perfect for sharing.", rating: 4 },
+            { user: "Olivia Green", comment: "Would order again.", rating: 5 }
         ],
-        tags: ["Indian", "main course", "steamed", "vegetarian"]
+        tags: ["appetizer", "spicy", "American", "crispy"]
     },
     {
         id: 16,
-        name: "Chow Mein",
-        price: 130,
-        quantity: 40,
-        category: "Main Course",
-        imageUrl: "/images/chow_mein.jpg",
-        description: "Stir-fried noodles with vegetables and a savory sauce.",
-        ingredients: ["Noodles", "Vegetables", "Soy sauce", "Ginger"],
-        nutritionalInfo: { calories: 550, fat: 18, protein: 15 },
-        rating: 4.5,
+        name: "Caesar Salad",
+        price: 140,
+        quantity: 30,
+        category: "Appetizers",
+        imageUrl: "/images/caesar_salad.jpg",
+        description: "A classic Caesar salad with crisp lettuce, croutons, and Parmesan cheese.",
+        ingredients: ["Lettuce", "Croutons", "Parmesan cheese", "Caesar dressing"],
+        nutritionalInfo: { calories: 250, fat: 18, protein: 8 },
+        rating: 4.4,
         reviews: [
-            { user: "Madhuri Dixit", comment: "Delicious and well-cooked.", rating: 4 },
-            { user: "Ranbir Kapoor", comment: "A bit oily but tasty.", rating: 3 }
+            { user: "Emma Brown", comment: "Loved the dressing.", rating: 5 },
+            { user: "Liam Wilson", comment: "Could use more croutons.", rating: 4 },
+            { user: "Olivia Martinez", comment: "Fresh and delicious.", rating: 5 },
+            { user: "James Johnson", comment: "A bit too much dressing.", rating: 3 },
+            { user: "Sophia Lee", comment: "Perfect side dish.", rating: 4 },
+            { user: "Ava Clark", comment: "Would order again.", rating: 5 }
         ],
-        tags: ["Asian", "main course", "vegetarian", "stir-fried"]
+        tags: ["appetizer", "healthy", "American", "salad"]
     },
     {
         id: 17,
-        name: "Spring Rolls",
-        price: 120,
-        quantity: 35,
-        category: "Appetizers",
-        imageUrl: "/images/spring_rolls.jpg",
-        description: "Crispy spring rolls filled with vegetables and served with dipping sauce.",
-        ingredients: ["Spring roll wrappers", "Vegetables", "Soy sauce"],
-        nutritionalInfo: { calories: 200, fat: 10, protein: 5 },
-        rating: 4.4,
+        name: "Margarita",
+        price: 180,
+        quantity: 20,
+        category: "Beverages",
+        imageUrl: "/images/margarita.jpg",
+        description: "A refreshing margarita cocktail with lime and tequila.",
+        ingredients: ["Tequila", "Lime juice", "Triple sec", "Salt"],
+        nutritionalInfo: { calories: 200, fat: 0, protein: 0 },
+        rating: 4.5,
         reviews: [
-            { user: "Aishwarya Rai", comment: "Crispy and delicious.", rating: 4 },
-            { user: "Hrithik Roshan", comment: "Could use more filling.", rating: 3 }
+            { user: "Olivia Brown", comment: "Perfectly balanced and refreshing.", rating: 5 },
+            { user: "Noah Davis", comment: "A bit too strong for me.", rating: 4 },
+            { user: "Emma Martinez", comment: "Loved the lime flavor.", rating: 5 },
+            { user: "James Lee", comment: "Could use more lime.", rating: 4 },
+            { user: "Sophia Green", comment: "Perfect with the salt rim.", rating: 5 },
+            { user: "Ava Johnson", comment: "A bit too sour for me.", rating: 3 }
         ],
-        tags: ["vegetarian", "appetizer", "Asian", "crispy"]
+        tags: ["beverage", "cocktail", "refreshing", "Mexican"]
     },
     {
         id: 18,
-        name: "Fish Curry",
-        price: 280,
-        quantity: 15,
-        category: "Main Course",
-        imageUrl: "/images/fish_curry.jpg",
-        description: "Spicy and tangy fish curry with aromatic spices.",
-        ingredients: ["Fish", "Coconut milk", "Spices", "Tomatoes"],
-        nutritionalInfo: { calories: 400, fat: 22, protein: 25 },
-        rating: 4.7,
+        name: "Smoothie",
+        price: 100,
+        quantity: 50,
+        category: "Beverages",
+        imageUrl: "/images/smoothie.jpg",
+        description: "A healthy smoothie with mixed fruits and yogurt.",
+        ingredients: ["Banana", "Berries", "Yogurt", "Honey"],
+        nutritionalInfo: { calories: 150, fat: 2, protein: 6 },
+        rating: 4.4,
         reviews: [
-            { user: "Deepika Padukone", comment: "Rich and flavorful.", rating: 5 },
-            { user: "Shahrukh Khan", comment: "A bit too spicy for my taste.", rating: 4 }
+            { user: "Mia Johnson", comment: "Perfectly refreshing.", rating: 5 },
+            { user: "Lucas Brown", comment: "Could use more honey.", rating: 4 },
+            { user: "Emma Martinez", comment: "Loved the fresh fruit.", rating: 5 },
+            { user: "Noah Davis", comment: "A bit too thick for me.", rating: 3 },
+            { user: "Sophia Wilson", comment: "Perfect for a hot day.", rating: 4 },
+            { user: "Liam Taylor", comment: "Would order again.", rating: 5 }
         ],
-        tags: ["spicy", "seafood", "main course", "Indian"]
+        tags: ["beverage", "healthy", "refreshing", "smoothie"]
     },
     {
         id: 19,
-        name: "Mutton Curry",
-        price: 320,
-        quantity: 10,
-        category: "Main Course",
-        imageUrl: "/images/mutton_curry.jpg",
-        description: "Hearty mutton curry with tender pieces of meat and spices.",
-        ingredients: ["Mutton", "Spices", "Onions", "Tomatoes"],
-        nutritionalInfo: { calories: 600, fat: 30, protein: 40 },
-        rating: 4.8,
+        name: "Coffee",
+        price: 80,
+        quantity: 100,
+        category: "Beverages",
+        imageUrl: "/images/coffee.jpg",
+        description: "Freshly brewed coffee with a rich aroma and bold flavor.",
+        ingredients: ["Coffee beans", "Water"],
+        nutritionalInfo: { calories: 5, fat: 0, protein: 0 },
+        rating: 4.7,
         reviews: [
-            { user: "Saif Ali Khan", comment: "Perfectly cooked mutton!", rating: 5 },
-            { user: "Kajol", comment: "A bit too oily.", rating: 4 }
+            { user: "Olivia Brown", comment: "Best coffee I've had.", rating: 5 },
+            { user: "Liam Davis", comment: "A bit too strong.", rating: 4 },
+            { user: "Emma Martinez", comment: "Perfectly brewed.", rating: 5 },
+            { user: "Noah Johnson", comment: "Could use more milk.", rating: 4 },
+            { user: "Sophia Wilson", comment: "Great flavor.", rating: 5 },
+            { user: "Liam Taylor", comment: "A bit too bitter.", rating: 3 }
         ],
-        tags: ["spicy", "Indian", "main course", "hearty"]
+        tags: ["beverage", "coffee", "hot", "bold"]
     },
     {
         id: 20,
-        name: "Butter Chicken",
-        price: 270,
-        quantity: 25,
-        category: "Main Course",
-        imageUrl: "/images/butter_chicken.jpg",
-        description: "Creamy and rich butter chicken with a buttery tomato-based sauce.",
-        ingredients: ["Chicken", "Butter", "Cream", "Tomato sauce", "Spices"],
-        nutritionalInfo: { calories: 700, fat: 40, protein: 30 },
-        rating: 4.9,
+        name: "Brownies",
+        price: 100,
+        quantity: 30,
+        category: "Desserts",
+        imageUrl: "/images/brownies.jpg",
+        description: "Rich and fudgy chocolate brownies with a gooey center.",
+        ingredients: ["Chocolate", "Flour", "Eggs", "Butter", "Sugar"],
+        nutritionalInfo: { calories: 300, fat: 15, protein: 4 },
+        rating: 4.8,
         reviews: [
-            { user: "Katrina Kaif", comment: "Absolutely delicious and creamy.", rating: 5 },
-            { user: "Varun Dhawan", comment: "A bit heavy but worth it.", rating: 4 }
+            { user: "Sophia Brown", comment: "Best brownies ever!", rating: 5 },
+            { user: "Liam Johnson", comment: "A bit too rich for me.", rating: 4 },
+            { user: "Emma Martinez", comment: "Loved the gooey center.", rating: 5 },
+            { user: "Noah Davis", comment: "Could use more chocolate.", rating: 4 },
+            { user: "Olivia Wilson", comment: "Perfectly fudgy.", rating: 5 },
+            { user: "Liam Taylor", comment: "A bit too sweet.", rating: 3 }
         ],
-        tags: ["Indian", "main course", "creamy", "rich"]
-    },
+        tags: ["dessert", "sweet", "chocolate", "fudgy"]
+    }
 ];

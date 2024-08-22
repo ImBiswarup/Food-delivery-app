@@ -24,7 +24,10 @@ const Home = () => {
                     {FoodItems.map((item) => (
                         <div key={item.id} className="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out">
                             <a href={item.id} className="relative">
-                                <img className="w-full h-48 object-cover" src={item.imageUrl} alt={item.name} />
+                                <img className="w-full h-48 object-cover"
+                                    // src={item.imageUrl}
+                                    src='https://res.cloudinary.com/djrdw0sqz/image/upload/v1724310827/burger_lyy4b3.jpg'
+                                    alt={item.name} />
                                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-transparent to-transparent p-4">
                                     <h3 className="text-white text-xl font-bold">{item.name}</h3>
                                     <p className="text-white text-lg font-semibold">Rs.{item.price}</p>

@@ -28,6 +28,7 @@ const signupHandler = async (req, res) => {
             password: hashedPassword,
             role
         });
+        console.log("createdUser: ",newUser);
 
         return res.status(201).json({
             msg: "User created successfully",
@@ -72,13 +73,13 @@ const loginHandler = async (req, res, next) => {
                 msg: "Login successful",
                 user: {
                     id: existingUser._id,
+                    name: existingUser.name,
                     email: existingUser.email,
                     role: existingUser.role,
                     token: req.token
                 }
             });
         });
-
     } catch (error) {
         next(error);
     }
