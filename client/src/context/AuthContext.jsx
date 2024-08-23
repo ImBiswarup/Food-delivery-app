@@ -22,8 +22,10 @@ const AuthContextProvider = ({ children }) => {
                             Authorization: `Bearer ${cookies.token}`,
                         },
                     });
+                    console.log('User data:', response.data);
                     setUser(response.data);
                 } catch (err) {
+                    console.log('Error fetching user:', err);
                     setError(err.response?.data?.msg || 'Failed to fetch user');
                     setUser(null);
                 }
@@ -35,7 +37,7 @@ const AuthContextProvider = ({ children }) => {
 
     const signin = async () => {
         try {
-            const response = await axios.post('http://localhost:3000/api/user/signup', {
+            await axios.post('http://localhost:3000/api/user/signup', {
                 name, email, password, role
             });
             setError('');
@@ -50,10 +52,9 @@ const AuthContextProvider = ({ children }) => {
                 email,
                 password
             });
-            setUser(response.data);
-            setCookie('token', response.data.token, { path: '/' });
+            setUser(response.data.user);
+            setCookie('token', response.data.user.token, { path: '/' });
             setError('');
-            console.log(user);
         } catch (err) {
             setError(err.response?.data?.msg || 'Login failed');
         }
@@ -62,6 +63,7 @@ const AuthContextProvider = ({ children }) => {
     const logout = () => {
         setUser(null);
         removeCookie('token', { path: '/' });
+
     };
 
     const value = {
