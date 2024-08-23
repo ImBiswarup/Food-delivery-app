@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import AuthModal from './AuthModal';
 import { useAuth } from '../context/AuthContext';
-import { FaUserCircle, FaSun, FaMoon } from 'react-icons/fa';
-// import cookies from 'react-cookies';
+import { FaUserCircle } from 'react-icons/fa';
 
 
 const Header = () => {
@@ -25,7 +24,6 @@ const Header = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
- 
 
   return (
     <>
@@ -165,7 +163,7 @@ const Header = () => {
                     <button
                       onClick={logout}
                       className="block text-gray-900 hover:text-blue-700 dark:text-white dark:hover:text-blue-500"
-                      // onClick={handleMenuToggle}
+                    // onClick={handleMenuToggle}
                     >
                       Logout
                     </button>

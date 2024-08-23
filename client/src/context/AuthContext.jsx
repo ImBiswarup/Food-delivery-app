@@ -22,7 +22,7 @@ const AuthContextProvider = ({ children }) => {
                             Authorization: `Bearer ${cookies.token}`,
                         },
                     });
-                    console.log('User data:', response.data);
+                    // console.log('User data:', response.data);
                     setUser(response.data);
                 } catch (err) {
                     console.log('Error fetching user:', err);

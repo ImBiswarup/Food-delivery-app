@@ -40,6 +40,9 @@ const signupHandler = async (req, res) => {
     }
 };
 
+
+
+
 const loginHandler = async (req, res, next) => {
     try {
         const { email, password } = req.body;
@@ -118,13 +121,20 @@ const fetchUser = async (req, res) => {
                 id: user._id,
                 name: user.name,
                 email: user.email,
-                role: user.role
+                role: user.role,
+                orderedFoodIds: user.orderedFoodIds, 
             }
         });
     } catch (error) {
         console.error('Fetch user error:', error);
         return res.status(500).json({ message: "Server error." });
     }
+};
+
+module.exports = {
+    signupHandler,
+    loginHandler,
+    fetchUser,
 };
 
 

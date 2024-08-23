@@ -7,9 +7,9 @@ const userSchema = new mongoose.Schema({
     role: { type: String, required: true },
     isVerified: { type: Boolean, default: false },
     token: { type: String },
+    orderedFoodIds: { type: [Number], default: [] },
 }, { timestamps: true });
 
+const User = mongoose.model("User", userSchema);
 
-const User = mongoose.model("User", userSchema)
-
-module.exports = User
+module.exports = User;

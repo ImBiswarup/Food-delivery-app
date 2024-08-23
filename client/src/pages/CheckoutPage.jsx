@@ -1,18 +1,30 @@
 import React, { useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 const CheckoutPage = () => {
   const location = useLocation();
   const { selectedItem, quantity } = location.state || {};
 
-  const [fullName, setFullName] = useState('');
+  const { user } = useAuth();
+  const [fullName, setFullName] = useState(user?.user?.name || ''); // Initialize with user name
   const [address, setAddress] = useState('');
   const [city, setCity] = useState('');
   const [postalCode, setPostalCode] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
 
   const handlePayment = () => {
-    console.log('Proceeding to payment for:', selectedItem.name, 'price:', selectedItem.price * quantity, 'Quantity:', quantity, "to", fullName, address);
+    console.log(
+      'Proceeding to payment for:',
+      selectedItem.name,
+      'price:',
+      selectedItem.price * quantity,
+      'Quantity:',
+      quantity,
+      'to',
+      fullName,
+      address
+    );
     // Add payment logic here
   };
 
@@ -28,7 +40,6 @@ const CheckoutPage = () => {
         <div className="border-b border-gray-200 pb-4 mb-4">
           <div className="flex items-center mb-2">
             <img
-              // src="/docs/images/blog/image-1.jpg" 
               src="https://res.cloudinary.com/djrdw0sqz/image/upload/v1724310827/burger_lyy4b3.jpg"
               alt={selectedItem.name}
               className="w-20 h-20 rounded-lg object-cover mr-4"
@@ -100,7 +111,9 @@ const CheckoutPage = () => {
         </div>
 
         <div className="flex justify-between items-center">
-          <Link to="/" className="text-blue-600 hover:underline">Back to Menu</Link>
+          <Link to="/" className="text-blue-600 hover:underline">
+            Back to Menu
+          </Link>
           <button
             className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
             onClick={handlePayment}
