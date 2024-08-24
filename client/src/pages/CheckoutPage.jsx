@@ -1,31 +1,63 @@
 import React, { useState } from 'react';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
+import { useCookies } from 'react-cookie';
+
 
 const CheckoutPage = () => {
   const location = useLocation();
   const { selectedItem, quantity } = location.state || {};
-
   const { user } = useAuth();
-  const [fullName, setFullName] = useState(user?.user?.name || ''); // Initialize with user name
+
+  const [fullName, setFullName] = useState(user?.user?.name || '');
   const [address, setAddress] = useState('');
   const [city, setCity] = useState('');
   const [postalCode, setPostalCode] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
 
-  const handlePayment = () => {
-    console.log(
-      'Proceeding to payment for:',
-      selectedItem.name,
-      'price:',
-      selectedItem.price * quantity,
-      'Quantity:',
-      quantity,
-      'to',
-      fullName,
-      address
-    );
-    // Add payment logic here
+  const [cookies] = useCookies(['token']);
+
+  // const navigate = useNavigate()
+
+console.log(user?.user.orderedFoodIds);
+
+  const handlePayment = async () => {
+    try {
+      const token = cookies.token;
+
+      console.log(
+        'Proceeding to payment for:',
+        selectedItem.name,
+        'price:',
+        selectedItem.price * quantity,
+        'Quantity:',
+        quantity,
+        'to',
+        fullName,
+        address
+      );
+
+      const response = await axios.post('http://localhost:3000/api/user/add-order', {
+        foodId: selectedItem.id
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        }
+      }
+      );
+      console.log("response.data: ", response.data);
+
+      setSuccess('Order placed successfully!');
+      // navigate('/')
+
+    } catch (error) {
+      console.error('Error adding ordered food:', error);
+      setError(error.response?.data?.message || 'An error occurred while placing your order.');
+    }
   };
 
   if (!selectedItem) {
@@ -36,6 +68,9 @@ const CheckoutPage = () => {
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 py-8">
       <div className="bg-white shadow-md rounded-lg w-full max-w-lg p-6">
         <h1 className="text-2xl font-bold mb-4 text-center">Checkout</h1>
+
+        {error && <div className="text-red-500 mb-4">{error}</div>}
+        {success && <div className="text-green-500 mb-4">{success}</div>}
 
         <div className="border-b border-gray-200 pb-4 mb-4">
           <div className="flex items-center mb-2">
