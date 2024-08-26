@@ -65,41 +65,6 @@ const AuthContextProvider = ({ children }) => {
 
     };
 
-    const handlePayment = async () => {
-        try {
-            const token = cookies.token;
-
-            console.log(
-                'Proceeding to payment for:',
-                selectedItem.name,
-                'price:',
-                selectedItem.price * quantity,
-                'Quantity:',
-                quantity,
-                'to',
-                fullName,
-                address
-            );
-
-            const response = await axios.post('http://localhost:3000/api/user/add-order', {
-                foodId: selectedItem.id
-            }, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                }
-            }
-            );
-            console.log("response.data: ", response.data);
-
-            setSuccess('Order placed successfully!');
-            // navigate('/')
-
-        } catch (error) {
-            console.error('Error adding ordered food:', error);
-            setError(error.response?.data?.message || 'An error occurred while placing your order.');
-        }
-    };
 
 
     const value = {

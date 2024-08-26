@@ -1,6 +1,8 @@
 const bcrypt = require('bcryptjs');
 const User = require('../model/user');
 const jwt = require('jsonwebtoken');
+const mongoose = require("mongoose");
+
 
 const signupHandler = async (req, res) => {
     try {
@@ -99,7 +101,6 @@ const loginHandler = async (req, res, next) => {
 
 
 const fetchUser = async (req, res) => {
-
     try {
         const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
 
@@ -109,20 +110,35 @@ const fetchUser = async (req, res) => {
 
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-        const user = await User.findById(decoded.id).select('-password');
+        const user = await User.findById(decoded.id)
+            .select('-password')
+            .populate({
+                path: 'orderedFoods.foodId', 
+                select: 'name price category imageUrl'
+            });
 
         if (!user) {
             return res.status(404).json({ message: "User not found." });
         }
 
-        console.log(user);
+        const orders = user.orderedFoods.map(order => ({
+            food: {
+                id: order.foodId._id,
+                name: order.foodId.name,
+                price: order.foodId.price,
+                category: order.foodId.category,
+                imageUrl: order.foodId.imageUrl,
+            },
+            quantity: order.quantity,
+        }));
+
         return res.json({
             user: {
                 id: user._id,
                 name: user.name,
                 email: user.email,
                 role: user.role,
-                orderedFoodIds: user.orderedFoodIds,
+                orders: orders, 
             }
         });
     } catch (error) {
@@ -136,7 +152,6 @@ const addOrderedFood = async (req, res) => {
     try {
         const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
 
-
         if (!token) {
             return res.status(401).json({ message: "No token provided." });
         }
@@ -145,29 +160,35 @@ const addOrderedFood = async (req, res) => {
         try {
             decoded = jwt.verify(token, process.env.JWT_SECRET);
         } catch (error) {
-            console.log("no token provided");
+            console.log("Invalid token.");
             return res.status(400).json({ message: "Invalid token." });
         }
 
-        const { foodId } = req.body;
-        if (!foodId) {
-            return res.status(400).json({ message: "No food ID provided." });
+        const { foodId, quantity } = req.body;
+
+        if (!foodId || !quantity) {
+            return res.status(400).json({ message: "Food ID and quantity are required." });
         }
 
         const user = await User.findOne({ email: decoded.email });
+
         if (!user) {
             return res.status(404).json({ message: "User not found." });
         }
 
-        if (!user.orderedFoodIds.includes(foodId)) {
-            user.orderedFoodIds.push(foodId);
-            await user.save();
+        const existingOrder = user.orderedFoods.find(order => order.foodId.toString() === foodId);
+
+        if (existingOrder) {
+            existingOrder.quantity += quantity;
+        } else {
+            user.orderedFoods.push({ foodId, quantity });
         }
+
+        await user.save();
 
         return res.status(200).json({
             message: "Food item added to orders.",
-            token: decoded,
-            orderedFoodIds: user.orderedFoodIds
+            orderedFoods: user.orderedFoods
         });
     } catch (error) {
         console.error('Add ordered food error:', error);

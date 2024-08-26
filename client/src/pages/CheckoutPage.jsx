@@ -20,9 +20,11 @@ const CheckoutPage = () => {
 
   const [cookies] = useCookies(['token']);
 
+  console.log(user);
+
   // const navigate = useNavigate()
 
-console.log(user?.user.orderedFoodIds);
+// console.log(user?.user.orderedFoodIds);
 
   const handlePayment = async () => {
     try {
@@ -41,7 +43,8 @@ console.log(user?.user.orderedFoodIds);
       );
 
       const response = await axios.post('http://localhost:3000/api/user/add-order', {
-        foodId: selectedItem.id
+        foodId: selectedItem._id,
+        quantity: quantity,
       }, {
         headers: {
           'Content-Type': 'application/json',

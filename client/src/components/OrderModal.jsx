@@ -10,7 +10,7 @@ const OrderModal = ({ isVisible, onClose, foodItems }) => {
   const selectedFood = foodItems[0];
 
   const handlePlaceOrder = () => {
-    navigate(`/${selectedFood.id}/checkout`, { state: { selectedItem: selectedFood, quantity: quantity } });
+    navigate(`/${selectedFood._id}/checkout`, { state: { selectedItem: selectedFood, quantity: quantity } });
   };
   
 

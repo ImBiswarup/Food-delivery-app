@@ -1,11 +1,33 @@
-import React, { useState } from 'react';
-import { FoodItems } from '../../public/FoodItems';
+import React, { useEffect, useState } from 'react';
 import OrderModal from '../components/OrderModal';
+
+import { useItem } from '../context/ItemContext';
 
 
 const Home = () => {
     const [isOrderModalOpen, setIsOrderModalOpen] = useState(false);
     const [selectedItem, setSelectedItem] = useState(null);
+
+    const { food, getItems, loading, error } = useItem();
+
+    useEffect(() => {
+        getItems();
+    }, []);
+
+    const apiUrl = process.env.VITE_API_BASE_URL;
+    console.log(apiUrl); 
+    
+    // console.log(food[0]?._id);
+
+    // const getItems = async () => {
+    //     const response = await axios.get('http://localhost:3000/api/item/get-items')
+
+    //     // setFood(response.data)
+
+    //     console.log(response.data.items);
+    // }
+
+    // getItems()
 
     const handleOrderClick = (item) => {
         setSelectedItem(item);
@@ -21,9 +43,9 @@ const Home = () => {
         <>
             <div className="p-8 bg-gray-100 min-h-screen">
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                    {FoodItems.map((item) => (
-                        <div key={item.id} className="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out">
-                            <a href={item.id} className="relative">
+                    {food.map((item) => (
+                        <div key={item._id} className="bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 ease-in-out">
+                            <a href={item._id} className="relative">
                                 <img className="w-full h-48 object-cover"
                                     // src={item.imageUrl}
                                     src='https://res.cloudinary.com/djrdw0sqz/image/upload/v1724310827/burger_lyy4b3.jpg'

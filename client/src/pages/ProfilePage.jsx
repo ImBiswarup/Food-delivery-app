@@ -4,33 +4,18 @@ import { Link } from "react-router-dom";
 
 const ProfilePage = () => {
     const { user } = useAuth();
-
     const [orderedFood, setOrderedFood] = useState([]);
 
-    const foodItems = [
-        { id: 1, name: 'Burger', price: 150 },
-        { id: 2, name: 'Pizza', price: 300 },
-        { id: 3, name: 'Pasta', price: 150 },
-        { id: 4, name: 'Sushi', price: 600 },
-        { id: 5, name: 'Salad', price: 125 },
-    ];
-
-    console.log(user?.user.orderedFoodIds);
-
     useEffect(() => {
-        if (user && user.user && user.user.orderedFoodIds) {
-            const orderedFoodIds = user.user.orderedFoodIds;
-
-            const orderedItems = foodItems.filter(item => orderedFoodIds.includes(item.id));
-            
-            setOrderedFood(orderedItems);
-            console.log(orderedFood.length);
+        if (user && user.user && user.user.orders) {
+            const orderedFoodItems = user.user.orders;
+            setOrderedFood(orderedFoodItems);
         }
     }, [user]);
 
+    console.log(user);
 
-
-    const subtotal = orderedFood.reduce((acc, item) => acc + item.price, 0);
+    const subtotal = orderedFood.reduce((acc, item) => acc + (item.food.price * item.quantity), 0);
 
     return (
         <>
@@ -39,20 +24,24 @@ const ProfilePage = () => {
                     <div className="bg-gray-900 text-white shadow-lg rounded-lg p-8">
                         <h1 className="text-4xl font-bold mb-6">{user.user.name}</h1>
                         <div className="overflow-x-auto">
-                            <h2 className="text-3xl font-semibold mb-4">Ordered Food</h2>
+                            <h2 className="text-3xl font-semibold mb-4">Your orders</h2>
                             <div className="overflow-y-auto max-h-96 bg-gray-700 rounded-lg shadow-md">
                                 <table className="min-w-full divide-y divide-gray-600">
                                     <thead className="bg-gray-600">
                                         <tr>
                                             <th className="p-4 text-left text-gray-100">Item</th>
+                                            <th className="p-4 text-right text-gray-100">Quantity</th>
                                             <th className="p-4 text-right text-gray-100">Price</th>
+                                            <th className="p-4 text-right text-gray-100">Total</th>
                                         </tr>
                                     </thead>
                                     <tbody className="bg-gray-800 divide-y divide-gray-700">
                                         {orderedFood.map((item, index) => (
                                             <tr key={index}>
-                                                <td className="p-4 text-gray-200">{item.name}</td>
-                                                <td className="p-4 text-right text-gray-300">Rs.{item.price}</td>
+                                                <td className="p-4 text-gray-200">{item.food.name}</td>
+                                                <td className="p-4 text-right text-gray-200">{item.quantity}</td>
+                                                <td className="p-4 text-right text-gray-300">Rs.{item.food.price}</td>
+                                                <td className="p-4 text-right text-gray-300">Rs.{item.food.price * item.quantity}</td>
                                             </tr>
                                         ))}
                                     </tbody>

@@ -7,7 +7,12 @@ const userSchema = new mongoose.Schema({
     role: { type: String, required: true },
     isVerified: { type: Boolean, default: false },
     token: { type: String },
-    orderedFoodIds: { type: [Number], default: [] },
+    orderedFoods: [
+        {
+            foodId: { type: mongoose.Schema.Types.ObjectId, ref: 'Item', required: true },
+            quantity: { type: Number, required: true }
+        }
+    ],
 }, { timestamps: true });
 
 const User = mongoose.model("User", userSchema);

@@ -1,17 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { FoodItems } from '../../public/FoodItems';
 import OrderModal from '../components/OrderModal';
+import { useItem } from '../context/ItemContext';
 
 const SingleItem = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [isModalVisible, setIsModalVisible] = useState(false);
 
-    const item = FoodItems.find(foodItem => foodItem.id === parseInt(id, 10));
+    const { food, getItems, loading, error } = useItem();
 
-    const relatedItems = FoodItems.filter(foodItem =>
-        foodItem.id !== item.id &&
+    useEffect(() => {
+        getItems();
+    }, []);
+
+    console.log(food);
+    console.log(id);
+
+    const item = food.find(foodItem => foodItem._id === id);
+    console.log(item);
+
+    const relatedItems = food.filter(foodItem =>
+        foodItem._id !== item._id &&
         foodItem.tags.some(tag => item.tags.includes(tag))
     );
 
@@ -90,7 +100,7 @@ const SingleItem = () => {
                     <h2 className="text-3xl font-bold mb-6 text-gray-900">You Might Also Like</h2>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                         {relatedItems.map(relatedItem => (
-                            <div key={relatedItem.id} className="bg-white border border-gray-200 rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300">
+                            <div key={relatedItem._id} className="bg-white border border-gray-200 rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300">
                                 <img
                                     // src={relatedItem.imageUrl || "/docs/images/blog/image-1.jpg"}
                                     src="https://res.cloudinary.com/djrdw0sqz/image/upload/v1724310827/burger_lyy4b3.jpg"
@@ -101,7 +111,7 @@ const SingleItem = () => {
                                     <h3 className="text-lg font-bold text-gray-900 mb-2">{relatedItem.name}</h3>
                                     <p className="text-gray-700 mb-4">Rs.{relatedItem.price}</p>
                                     <button
-                                        onClick={() => handleViewDetailsClick(relatedItem.id)}
+                                        onClick={() => handleViewDetailsClick(relatedItem._id)}
                                         className="w-full inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-blue-600 to-blue-800 rounded-xl shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 transition-transform transform hover:scale-105"
                                     >
                                         View Details
