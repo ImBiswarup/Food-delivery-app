@@ -21,12 +21,28 @@ const ItemContextProvider = ({ children }) => {
         }
     };
 
+    const addItem = async (newItem) => {
+        setLoading(true);
+        setError(null);
+        try {
+            const response = await axios.post('http://localhost:3000/api/item/add-items', newItem);
+            if (response.status === 201) {
+                setFood((prevFood) => [...prevFood, response.data.item]);
+            }
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setLoading(false);
+        }
+    };
+
     const value = {
         food,
         setFood,
         getItems,
+        addItem,
         loading,
-        error
+        error,
     };
 
     return (

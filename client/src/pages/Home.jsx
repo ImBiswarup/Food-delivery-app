@@ -14,8 +14,8 @@ const Home = () => {
         getItems();
     }, []);
 
-    const apiUrl = process.env.VITE_API_BASE_URL;
-    console.log(apiUrl); 
+    // const apiUrl = process.env.VITE_API_BASE_URL;
+    // console.log(apiUrl); 
     
     // console.log(food[0]?._id);
 

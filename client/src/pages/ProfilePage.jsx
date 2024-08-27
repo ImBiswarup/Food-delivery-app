@@ -56,7 +56,7 @@ const ProfilePage = () => {
                 </div>
             ) : (
                 <div className="container flex items-center justify-center flex-col min-h-screen bg-gray-800">
-                    <h1 className='text-5xl text-center font-bold text-white'>Not Authorized</h1>
+                    <h1 className='text-5xl text-center font-bold text-white'>Create Account First</h1>
                     <p className="mt-4">
                         <Link
                             to={'/'}

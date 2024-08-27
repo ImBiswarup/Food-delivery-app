@@ -6,6 +6,7 @@ import Contact from "./pages/Contact"
 import SingleItem from "./pages/SingleItem"
 import CheckoutPage from "./pages/CheckoutPage"
 import ProfilePage from "./pages/ProfilePage"
+import Add_items from "./pages/Add_items"
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/:id" element={<SingleItem />} />
+        <Route path="/add-items" element={<Add_items />} />
         <Route path="/:id/checkout" element={<CheckoutPage />} />
       </Routes>
     </>

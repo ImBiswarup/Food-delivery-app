@@ -24,7 +24,7 @@ const CheckoutPage = () => {
 
   // const navigate = useNavigate()
 
-// console.log(user?.user.orderedFoodIds);
+  // console.log(user?.user.orderedFoodIds);
 
   const handlePayment = async () => {
     try {
@@ -55,11 +55,11 @@ const CheckoutPage = () => {
       console.log("response.data: ", response.data);
 
       setSuccess('Order placed successfully!');
-      // navigate('/')
+      navigate('/profile')
 
     } catch (error) {
       console.error('Error adding ordered food:', error);
-      setError(error.response?.data?.message || 'An error occurred while placing your order.');
+      setError("Create account first!");
     }
   };
 
