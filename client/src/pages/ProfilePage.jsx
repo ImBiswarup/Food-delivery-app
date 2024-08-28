@@ -23,6 +23,7 @@ const ProfilePage = () => {
                 <div className="container mx-auto px-4 py-8 bg-gray-800 min-h-screen">
                     <div className="bg-gray-900 text-white shadow-lg rounded-lg p-8">
                         <h1 className="text-4xl font-bold mb-6">{user.user.name}</h1>
+                        {/* <button className='p-2 hover:bg-blue-300 rounded'>Edit profile</button> */}
                         <div className="overflow-x-auto">
                             <h2 className="text-3xl font-semibold mb-4">Your orders</h2>
                             <div className="overflow-y-auto max-h-96 bg-gray-700 rounded-lg shadow-md">

@@ -1,7 +1,6 @@
 const bcrypt = require('bcryptjs');
 const User = require('../model/user');
 const jwt = require('jsonwebtoken');
-const mongoose = require("mongoose");
 
 
 const signupHandler = async (req, res) => {
@@ -113,7 +112,7 @@ const fetchUser = async (req, res) => {
         const user = await User.findById(decoded.id)
             .select('-password')
             .populate({
-                path: 'orderedFoods.foodId', 
+                path: 'orderedFoods.foodId',
                 select: 'name price category imageUrl'
             });
 
@@ -138,7 +137,7 @@ const fetchUser = async (req, res) => {
                 name: user.name,
                 email: user.email,
                 role: user.role,
-                orders: orders, 
+                orders: orders,
             }
         });
     } catch (error) {
@@ -196,11 +195,60 @@ const addOrderedFood = async (req, res) => {
     }
 };
 
+const updateUser = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { name, email, password, role } = req.body;
+
+        if (!id || (!name && !email && !password && !role)) {
+            return res.status(400).json({ message: "Invalid request. Please provide valid user details." });
+        }
+
+        const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
+        console.log("Received token: ", token);
+
+        if (!token) {
+            return res.status(401).json({ message: "No token provided." });
+        }
+
+        const user = await User.findById(id);
+        console.log("User found:", user);
+
+        if (!user) {
+            return res.status(404).json({ message: "User not found." });
+        }
+
+        if (name) user.name = name;
+        if (email) user.email = email;
+        if (password) {
+            const hashedPassword = await bcrypt.hash(password, 10);
+            user.password = hashedPassword;
+        }
+        if (role) user.role = role;
+
+        await user.save();
+
+        return res.status(200).json({
+            message: "User updated successfully",
+            user: {
+                id: user._id,
+                name: user.name,
+                email: user.email,
+                role: user.role
+            }
+        });
+    } catch (error) {
+        console.error('Update user error:', error);
+        return res.status(500).json({ message: "Server error." });
+    }
+};
+
 
 module.exports = {
     signupHandler,
     loginHandler,
     fetchUser,
+    updateUser,
     addOrderedFood,
 };
 
