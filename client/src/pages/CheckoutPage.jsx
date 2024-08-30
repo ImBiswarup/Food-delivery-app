@@ -22,7 +22,7 @@ const CheckoutPage = () => {
 
   console.log(user);
 
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
 
   // console.log(user?.user.orderedFoodIds);
 
@@ -55,7 +55,7 @@ const CheckoutPage = () => {
       console.log("response.data: ", response.data);
 
       setSuccess('Order placed successfully!');
-      navigate('/profile')
+      navigate('/profile/' + `${user?.user.id}`);
 
     } catch (error) {
       console.error('Error adding ordered food:', error);
