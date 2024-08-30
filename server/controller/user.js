@@ -197,8 +197,10 @@ const addOrderedFood = async (req, res) => {
 
 const updateUser = async (req, res) => {
     try {
-        const { id } = req.params;
-        const { name, email, password, role } = req.body;
+        // const { id } = req.params;
+        const { name, email, password, role, id } = req.body;
+
+        console.log(req.body);
 
         if (!id || (!name && !email && !password && !role)) {
             return res.status(400).json({ message: "Invalid request. Please provide valid user details." });
@@ -228,8 +230,10 @@ const updateUser = async (req, res) => {
 
         await user.save();
 
+        console.log(user);
+
         return res.status(200).json({
-            message: "User updated successfully",
+            msg: "User updated successfully",
             user: {
                 id: user._id,
                 name: user.name,
@@ -242,6 +246,7 @@ const updateUser = async (req, res) => {
         return res.status(500).json({ message: "Server error." });
     }
 };
+
 
 
 module.exports = {

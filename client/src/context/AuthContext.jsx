@@ -13,6 +13,12 @@ const AuthContextProvider = ({ children }) => {
     const [role, setRole] = useState('');
     const [error, setError] = useState('');
 
+    // const [updatedName, setUpdatedName] = useState('');
+    // const [updatedEmail, setUpdatedEmail] = useState('');
+    // const [updatedRole, setUpdatedRole] = useState('');
+    // const [updatedPass, setUpdatedPass] = useState('')
+
+
     useEffect(() => {
         const fetchUser = async () => {
             if (cookies.token) {
@@ -64,8 +70,6 @@ const AuthContextProvider = ({ children }) => {
         removeCookie('token', { path: '/' });
 
     };
-
-    
 
 
 

@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useItem } from '../context/ItemContext';
-
+import { useAuth } from '../context/AuthContext'
 const ItemForm = () => {
+
     const { addItem } = useItem();
+    const { user } = useAuth()
     const [itemData, setItemData] = useState({
         name: '',
         price: '',
@@ -81,6 +83,14 @@ const ItemForm = () => {
             alert('Failed to create item. Please try again.');
         }
     };
+
+    if (user?.user.role != 'admin') {
+        return (
+            <div className="container">
+                <h1>Not authorized</h1>
+            </div>
+        )
+    }
 
     return (
         <div className="container mx-auto px-4 py-8">
