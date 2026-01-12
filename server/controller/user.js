@@ -29,7 +29,7 @@ const signupHandler = async (req, res) => {
             password: hashedPassword,
             role
         });
-        console.log("createdUser: ", newUser);
+        //console.log("createdUser: ", newUser);
 
         return res.status(201).json({
             msg: "User created successfully",
@@ -80,12 +80,13 @@ const loginHandler = async (req, res, next) => {
         existingUser.token = token;
         await existingUser.save();
 
-        console.log('Token generated:', token);
-        console.log('User data:', existingUser);
+        //console.log('Token generated:', token);
+        //console.log('User data:', existingUser);
 
         return res.status(200).json({
             msg: 'Login successful',
             user: {
+                id: existingUser._id,
                 name: existingUser.name,
                 email: existingUser.email,
                 role: existingUser.role,
@@ -93,7 +94,7 @@ const loginHandler = async (req, res, next) => {
             },
         });
     } catch (error) {
-        console.log('Login error:', error);
+        //console.log('Login error:', error);
         next(error);
     }
 };
@@ -149,27 +150,27 @@ const fetchUser = async (req, res) => {
 
 const addOrderedFood = async (req, res) => {
     try {
-        const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
+        // const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
 
-        if (!token) {
-            return res.status(401).json({ message: "No token provided." });
-        }
+        // if (!token) {
+        //     return res.status(401).json({ message: "No token provided." });
+        // }
 
-        let decoded;
-        try {
-            decoded = jwt.verify(token, process.env.JWT_SECRET);
-        } catch (error) {
-            console.log("Invalid token.");
-            return res.status(400).json({ message: "Invalid token." });
-        }
+        // let decoded;
+        // try {
+        //     decoded = jwt.verify(token, process.env.JWT_SECRET);
+        // } catch (error) {
+        //     //console.log("Invalid token.");
+        //     return res.status(400).json({ message: "Invalid token." });
+        // }
 
-        const { foodId, quantity } = req.body;
+        const { foodId, quantity, userEmail } = req.body;
 
         if (!foodId || !quantity) {
             return res.status(400).json({ message: "Food ID and quantity are required." });
         }
 
-        const user = await User.findOne({ email: decoded.email });
+        const user = await User.findOne({ email: userEmail });
 
         if (!user) {
             return res.status(404).json({ message: "User not found." });
@@ -184,6 +185,8 @@ const addOrderedFood = async (req, res) => {
         }
 
         await user.save();
+
+        // console.log(user.orderedFoods);
 
         return res.status(200).json({
             message: "Food item added to orders.",
@@ -200,21 +203,21 @@ const updateUser = async (req, res) => {
         // const { id } = req.params;
         const { name, email, password, role, id } = req.body;
 
-        console.log(req.body);
+        //console.log(req.body);
 
         if (!id || (!name && !email && !password && !role)) {
             return res.status(400).json({ message: "Invalid request. Please provide valid user details." });
         }
 
         const token = req.cookies.token || req.headers.authorization?.split(' ')[1];
-        console.log("Received token: ", token);
+        //console.log("Received token: ", token);
 
         if (!token) {
             return res.status(401).json({ message: "No token provided." });
         }
 
         const user = await User.findById(id);
-        console.log("User found:", user);
+        //console.log("User found:", user);
 
         if (!user) {
             return res.status(404).json({ message: "User not found." });
@@ -230,7 +233,7 @@ const updateUser = async (req, res) => {
 
         await user.save();
 
-        console.log(user);
+        //console.log(user);
 
         return res.status(200).json({
             msg: "User updated successfully",

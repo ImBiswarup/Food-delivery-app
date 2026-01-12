@@ -29,6 +29,9 @@ const ItemContextProvider = ({ children }) => {
             if (response.status === 201) {
                 setFood((prevFood) => [...prevFood, response.data.item]);
             }
+            if (response.data.success) {
+                return { success: true };
+            }
         } catch (err) {
             setError(err.message);
         } finally {

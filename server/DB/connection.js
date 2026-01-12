@@ -2,8 +2,8 @@ const mongoose = require('mongoose')
 
 const conncetToDB = async (url) => {
     mongoose.connect(url)
-        .then(() => "Connection established")
-        .then((err) => console.log(err));
+        .then(() => console.log("Connection established"))
+        .catch((err) => console.log(err));
 
 }
 

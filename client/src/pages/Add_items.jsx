@@ -5,10 +5,12 @@ const ItemForm = () => {
 
     const { addItem } = useItem();
     const { user } = useAuth()
+    console.log('userId : ', user?.id);
     const [itemData, setItemData] = useState({
+        seller: user?.id || localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')).id : '',
         name: '',
         price: '',
-        quantity: '',
+        // quantity: '',
         category: '',
         imageUrl: '',
         description: '',
@@ -21,7 +23,7 @@ const ItemForm = () => {
         rating: '',
         tags: '',
     });
-
+    //console.log(itemData);
     const handleChange = (e) => {
         const { name, value } = e.target;
 
@@ -55,36 +57,41 @@ const ItemForm = () => {
                 protein: parseFloat(itemData.nutritionalInfo.protein),
             },
             price: parseFloat(itemData.price),
-            quantity: parseInt(itemData.quantity, 10),
+            // quantity: parseInt(itemData.quantity, 10),
             rating: parseFloat(itemData.rating),
         };
 
         try {
-            await addItem(formattedItemData);
-            alert('Item created successfully!');
-            setItemData({
-                name: '',
-                price: '',
-                quantity: '',
-                category: '',
-                imageUrl: '',
-                description: '',
-                ingredients: '',
-                nutritionalInfo: {
-                    calories: '',
-                    fat: '',
-                    protein: '',
-                },
-                rating: '',
-                tags: '',
-            });
+            const res = await addItem(formattedItemData);
+            console.log("items to add : ", formattedItemData);
+            if (res.success === true) {
+                alert('Item created successfully!');
+                setItemData({
+                    seller: '',
+                    name: '',
+                    price: '',
+                    // quantity: '',
+                    category: '',
+                    imageUrl: '',
+                    description: '',
+                    ingredients: '',
+                    nutritionalInfo: {
+                        calories: '',
+                        fat: '',
+                        protein: '',
+                    },
+                    rating: '',
+                    tags: '',
+                });
+                window.location.replace('/');
+            }
         } catch (error) {
             console.error('Error creating item:', error);
             alert('Failed to create item. Please try again.');
         }
     };
 
-    if (user?.user.role != 'admin') {
+    if (user?.role != 'Seller') {
         return (
             <div className="container">
                 <h1>Not authorized</h1>
@@ -118,7 +125,7 @@ const ItemForm = () => {
                         required
                     />
                 </div>
-                <div>
+                {/* <div>
                     <label className="block font-medium">Quantity</label>
                     <input
                         type="number"
@@ -128,7 +135,7 @@ const ItemForm = () => {
                         className="w-full px-4 py-2 border rounded"
                         required
                     />
-                </div>
+                </div> */}
                 <div>
                     <label className="block font-medium">Category</label>
                     <input

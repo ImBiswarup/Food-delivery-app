@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
-import { useLocation, Link, useNavigate } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
-import { useCookies } from 'react-cookie';
 
 
 const CheckoutPage = () => {
   const location = useLocation();
   const { selectedItem, quantity } = location.state || {};
-  const { user } = useAuth();
+  const { updatedUser } = useAuth();
 
-  const [fullName, setFullName] = useState(user?.user?.name || '');
+  const [fullName, setFullName] = useState(updatedUser?.user?.name || '');
   const [address, setAddress] = useState('');
   const [city, setCity] = useState('');
   const [postalCode, setPostalCode] = useState('');
@@ -18,44 +17,21 @@ const CheckoutPage = () => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
 
-  const [cookies] = useCookies(['token']);
-
-  console.log(user);
-
-  const navigate = useNavigate()
-
-  // console.log(user?.user.orderedFoodIds);
+  console.log(updatedUser);
 
   const handlePayment = async () => {
     try {
-      const token = cookies.token;
-
-      console.log(
-        'Proceeding to payment for:',
-        selectedItem.name,
-        'price:',
-        selectedItem.price * quantity,
-        'Quantity:',
-        quantity,
-        'to',
-        fullName,
-        address
-      );
-
       const response = await axios.post('http://localhost:3000/api/user/add-order', {
         foodId: selectedItem._id,
         quantity: quantity,
-      }, {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        }
+        userEmail: updatedUser?.user?.email,
       }
       );
       console.log("response.data: ", response.data);
 
       setSuccess('Order placed successfully!');
-      navigate('/profile/' + `${user?.user.id}`);
+      alert('Order placed successfully!');
+      window.location.replace(`/profile/${updatedUser?.user?.id}`);
 
     } catch (error) {
       console.error('Error adding ordered food:', error);
@@ -104,7 +80,7 @@ const CheckoutPage = () => {
               <label className="block text-sm font-medium text-gray-700">Full Name</label>
               <input
                 type="text"
-                value={fullName}
+                value={updatedUser?.user?.name}
                 onChange={(e) => setFullName(e.target.value)}
                 className="mt-1 block w-full border border-gray-300 rounded-md p-2"
               />
@@ -156,7 +132,7 @@ const CheckoutPage = () => {
             className="px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
             onClick={handlePayment}
           >
-            Proceed to Payment
+            Order Now
           </button>
         </div>
       </div>

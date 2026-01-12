@@ -15,16 +15,16 @@ const Home = () => {
     }, []);
 
     // const apiUrl = process.env.VITE_API_BASE_URL;
-    // console.log(apiUrl); 
+    // //console.log(apiUrl); 
     
-    // console.log(food[0]?._id);
+    // //console.log(food[0]?._id);
 
     // const getItems = async () => {
     //     const response = await axios.get('http://localhost:3000/api/item/get-items')
 
     //     // setFood(response.data)
 
-    //     console.log(response.data.items);
+    //     //console.log(response.data.items);
     // }
 
     // getItems()

@@ -10,7 +10,7 @@ const Header = () => {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const { user, logout } = useAuth();
+  const { updatedUser, logout } = useAuth();
 
   const handleMenuToggle = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -52,20 +52,20 @@ const Header = () => {
               Contact
             </Link>
 
-            {user ? (
+            {updatedUser ? (
               <div className="relative">
                 <button
                   className="flex items-center text-gray-900 dark:text-white"
                   onClick={handleDropdownToggle}
                 >
                   <FaUserCircle size={24} />
-                  <span className="ml-2">{user?.user?.name}</span>
+                  <span className="ml-2">{updatedUser?.user?.name}</span>
                 </button>
                 {isDropdownOpen && (
                   <ul className="absolute right-0 bg-white dark:bg-gray-800 rounded shadow-lg mt-2 w-48 z-10">
                     <li>
                       <Link
-                        to={`/profile/${user?.user.id}`}
+                        to={`/profile/${updatedUser?.user?.id}`}
                         className="block w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700"
                         onClick={() => setIsDropdownOpen(false)}
                       >
@@ -148,7 +148,7 @@ const Header = () => {
                 </Link>
               </li>
 
-              {user ? (
+              {updatedUser ? (
                 <>
                   <li>
                     <Link

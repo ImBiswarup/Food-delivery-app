@@ -14,11 +14,7 @@ const SingleItem = () => {
         getItems();
     }, []);
 
-    console.log(food);
-    console.log(id);
-
     const item = food.find(foodItem => foodItem._id === id);
-    console.log(item);
 
     const relatedItems = food.filter(foodItem =>
         foodItem._id !== item._id &&
